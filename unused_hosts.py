@@ -8,9 +8,9 @@ outlock = threading.Lock()
 
 ec2 = boto3.resource('ec2')
 
-key_names = {'mumbai': '/home/ansible/.ssh/mumbai.pem', 'singapore': '/home/ansible/.ssh/singapore.pem', 'travel':'/home/ansible/.ssh/travel.pem'}
+key_names = {'mumbai': '/home/puneet/.ssh/mumbai.pem', 'singapore': '/home/puneet/.ssh/singapore.pem'}
 ssh_user = 'ubuntu'
-checkout_path = '/srv/flights/'
+checkout_path = '/srv/code/'
 uncommited_days = 3
 git_format = "%H,%ad"
 is_termination_enabled = True
@@ -64,6 +64,11 @@ def workon(instance):
 
 
 def terminate_instance(instances):
+    ids = []
+    for instance in instances:
+	ids.append(instance['instance_id'])
+    print(ids)
+    ec2.instances.filter(InstanceIds=ids).terminate()
     print("terminated")
 
 def main():
