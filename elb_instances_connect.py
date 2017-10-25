@@ -6,11 +6,11 @@ ec2 = boto3.resource('ec2')
 
 outlock = threading.Lock()
 
-key_names = {'mumbai': '/home/ansible/.ssh/mumbai.pem', 'singapore': '/home/ansible/.ssh/singapore.pem'}
+key_names = {'mumbai': '/home/ansible/.ssh/mumbai.pem', 'singapore': '/home/ansible/.ssh/singapore.pem', 'travel': '/home/ansible/.ssh/travel.pem'}
 ssh_user = 'ubuntu'
 
 
-load_balancer_names = ['travelui-beta']
+load_balancer_names = ['travel-trains-es']
 
 def get_elb_descriptions():
 	elb_describe = elb.describe_load_balancers(LoadBalancerNames=load_balancer_names)
