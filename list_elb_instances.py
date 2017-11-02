@@ -2,7 +2,7 @@ import boto3
 elb = boto3.client('elb')
 ec2 = boto3.resource('ec2')
 
-load_balancer_names = ['travelui-beta']
+load_balancer_names = ['travel-trains-microservice-elb']
 
 def get_elb_descriptions():
 	elb_describe = elb.describe_load_balancers(LoadBalancerNames=load_balancer_names)
